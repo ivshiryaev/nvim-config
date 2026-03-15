@@ -825,7 +825,6 @@ require('lazy').setup({
         'tsx',
         'css',
         'scss',
-        'sass',
       }
       require('nvim-treesitter').install(parsers)
       vim.api.nvim_create_autocmd('FileType', {
