@@ -544,6 +544,7 @@ require('lazy').setup({
         html = {},
         cssls = {},
         shopify_theme_ls = {},
+        emmet_language_server = {},
 
         stylua = {}, -- Used to format Lua code
 
