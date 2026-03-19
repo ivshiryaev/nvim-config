@@ -88,6 +88,12 @@ vim.keymap.set('n', '<Esc>', '<cmd>nohlsearch<CR>')
 -- 🐈 Custom keymaps
 vim.keymap.set('n', '<leader>e', ':Neotree toggle right reveal<CR>')
 
+-- Limit the scrolling
+vim.keymap.set('n', '<C-d>', '6<C-d>zz')
+vim.keymap.set('n', '<C-u>', '6<C-u>zz')
+vim.keymap.set('n', 'n', 'nzz')
+vim.keymap.set('n', 'N', 'Nzz')
+
 -- Diagnostic Config & Keymaps
 -- See :help vim.diagnostic.Opts
 vim.diagnostic.config {
