@@ -320,17 +320,17 @@ require('lazy').setup({
         -- You can put your default mappings / updates / etc. in here
         --  All the info you're looking for is in `:help telescope.setup()`
         --
-        defaults = {
-          layout_strategy = 'horizontal',
-          wrap_results = false,
-          preview = false,
-          layout_config = {
-            horizontal = {
-              width = 0.5,
-              height = 0.8,
-              preview_width = 0.5,
-            }
-          }
+        defaults = require('telescope.themes').get_ivy {
+          -- layout_strategy = 'horizontal',
+          -- wrap_results = false,
+          -- preview = false,
+          -- layout_config = {
+          --   horizontal = {
+          --     width = 0.5,
+          --     height = 0.8,
+          --     preview_width = 0.5,
+          --   }
+          -- }
         },
         extensions = {
           ['ui-select'] = { require('telescope.themes').get_dropdown() },
