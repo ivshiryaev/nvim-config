@@ -166,6 +166,9 @@ end
 local rtp = vim.opt.rtp
 rtp:prepend(lazypath)
 
+local shopify_server = vim.fn.glob(vim.fn.expand '~/.vscode/extensions/shopify.theme-check-vscode-3.11.12/dist/node/server.js', false, true)
+shopify_server = shopify_server[#shopify_server] -- newest version
+
 -- [[ Configure and install plugins ]]
 --
 --  To check the current status of your plugins, run
@@ -561,8 +564,12 @@ require('lazy').setup({
         -- My Custom servers
         html = {},
         cssls = {},
-        shopify_theme_ls = {},
         emmet_language_server = {},
+        jsonls = {},
+        shopify_theme_ls = {
+          cmd = { vim.fn.expand '~/.nvm/versions/node/v24.14.0/bin/node', shopify_server, '--stdio' },
+        },
+
 
         stylua = {}, -- Used to format Lua code
 
@@ -603,7 +610,15 @@ require('lazy').setup({
       --    :Mason
       --
       -- You can press `g?` for help in this menu.
-      local ensure_installed = vim.tbl_keys(servers or {})
+
+      -- Servers Mason should NOT install (we use the global binary instead)
+      local skip_mason = { shopify_theme_ls = true }
+
+      local ensure_installed = vim.tbl_filter(
+        function(name) return not skip_mason[name] end,
+        vim.tbl_keys(servers or {})
+      )
+
       vim.list_extend(ensure_installed, {
         -- You can add other tools here that you want Mason to install
       })
