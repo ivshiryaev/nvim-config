@@ -166,8 +166,16 @@ end
 local rtp = vim.opt.rtp
 rtp:prepend(lazypath)
 
-local shopify_server = vim.fn.glob(vim.fn.expand '~/.vscode/extensions/shopify.theme-check-vscode-3.11.12/dist/node/server.js', false, true)
-shopify_server = shopify_server[#shopify_server] -- newest version
+-- Node: whatever's on PATH, else the newest nvm version
+local node = vim.fn.exepath 'node'
+if node == '' then
+  local nvm_nodes = vim.fn.glob(vim.fn.expand '~/.nvm/versions/node/*/bin/node', false, true)
+  node = nvm_nodes[#nvm_nodes] or 'node'
+end
+
+-- Shopify theme server from the VS Code extension (newest installed version)
+local shopify_server = vim.fn.glob(vim.fn.expand '~/.vscode/extensions/shopify.theme-check-vscode-*/dist/node/server.js', false, true)
+shopify_server = shopify_server[#shopify_server]
 
 -- [[ Configure and install plugins ]]
 --
@@ -566,9 +574,9 @@ require('lazy').setup({
         cssls = {},
         emmet_language_server = {},
         jsonls = {},
-        shopify_theme_ls = {
-          cmd = { vim.fn.expand '~/.nvm/versions/node/v24.14.0/bin/node', shopify_server, '--stdio' },
-        },
+        shopify_theme_ls = shopify_server and {
+          cmd = { node, shopify_server, '--stdio' },
+        } or nil,
 
 
         stylua = {}, -- Used to format Lua code
