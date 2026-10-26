@@ -835,12 +835,12 @@ require('lazy').setup({
       require('mini.surround').setup{
         custom_surroundings = {
           -- {% ... %}  → use with: saiwl, sdl, srl"
-          l = {
+          L = {
             input = { '{%%%s*().-()%s*%%}' },
             output = { left = '{% ', right = ' %}' },
           },
           -- {{ ... }}  → use with: saiwo, sdo
-          o = {
+          O = {
             input = { '{{%s*().-()%s*}}' },
             output = { left = '{{ ', right = ' }}' },
           },
