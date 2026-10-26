@@ -87,6 +87,7 @@ vim.keymap.set('n', '<Esc>', '<cmd>nohlsearch<CR>')
 
 -- 🐈 Custom keymaps
 vim.keymap.set('n', '<leader>e', ':Neotree toggle right reveal<CR>')
+vim.keymap.set('n', '<leader>o', ':Oil<CR>')
 
 -- Limit the scrolling
 vim.keymap.set('n', '<C-d>', '6<C-d>zz')
@@ -938,6 +939,7 @@ require('lazy').setup({
   require 'kickstart.plugins.lint',
   require 'kickstart.plugins.autopairs',
   require 'kickstart.plugins.neo-tree',
+  require 'kickstart.plugins.oil-nvim',
   -- require 'kickstart.plugins.gitsigns', -- adds gitsigns recommend keymaps
 
   require 'kickstart.plugins.gitsigns', -- adds gitsigns recommend keymaps
