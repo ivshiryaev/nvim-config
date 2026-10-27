@@ -891,6 +891,7 @@ require('lazy').setup({
         'html',
         'lua',
         'luadoc',
+        'liquid',
         'markdown',
         'markdown_inline',
         'query',
