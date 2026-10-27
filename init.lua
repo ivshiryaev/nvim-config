@@ -828,6 +828,16 @@ require('lazy').setup({
       --  - ci'  - [C]hange [I]nside [']quote
       require('mini.ai').setup { n_lines = 500 }
 
+      require('mini.pairs').setup {}
+
+      vim.api.nvim_create_autocmd('FileType', {
+        pattern = 'liquid',
+        callback = function()
+          -- `%` inside braces -> {% | %}
+          MiniPairs.map_buf(0, 'i', '%', { action = 'closeopen', pair = '%%', neigh_pattern = '{.', register = { cr = false } })
+        end,
+      })
+
       -- Add/delete/replace surroundings (brackets, quotes, etc.)
       --
       -- - saiw) - [S]urround [A]dd [I]nner [W]ord [)]Paren
