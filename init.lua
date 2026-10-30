@@ -572,6 +572,7 @@ require('lazy').setup({
 
         -- My Custom servers
         html = {},
+        graphql = {},
         cssls = {},
         emmet_language_server = {},
         jsonls = {},
@@ -888,6 +889,7 @@ require('lazy').setup({
         'bash',
         'c',
         'diff',
+        'graphql',
         'html',
         'lua',
         'luadoc',
